@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 14:24:41 by msharifi          #+#    #+#             */
-/*   Updated: 2022/12/27 17:51:17 by msharifi         ###   ########.fr       */
+/*   Created: 2022/12/27 16:06:59 by msharifi          #+#    #+#             */
+/*   Updated: 2022/12/27 16:10:47 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/philo.h"
+#include "../includes/philo.h"
 
-// parsing verifier le nombre de philo (av[1])
-
-int	main(int ac, char **av)
+int	err_msg(char *s1, int ret_val)
 {
-	t_data	data;
-
-	if (ac != 5 && ac != 6)
-		return (err_msg(TUTO, 1));
-	if (create_data(&data, ac, av))
-		return (2);
-	print_philo(&data);
-	return (0);
+	if (s1)
+		write(STDERR_FILENO, s1, ft_strlen(s1));
+	write(STDERR_FILENO, "\n", 1);
+	return (ret_val);
 }

@@ -1,18 +1,31 @@
-NAME	= philo
+NAME		=	philo
 
-SRCS	= main.c
+CREATE_DIR	=	create/
 
-OBJS	= ${SRCS:.c=.o}
+ERROR_DIR	=	error/
 
-CC		= clang
+FREE_DIR	=	free/
 
-C_FLAGS	= -Wall -Werror -Wextra
+UTILS_DIR	=	utils/
 
-RM		=	rm -rf
+SRCS		=	main.c \
+				test_print.c \
+				${CREATE_DIR}create.c \
+				${ERROR_DIR}error.c \
+				${FREE_DIR}free.c \
+				${UTILS_DIR}utils.c
 
-GREEN	=	\033[1;32m
+OBJS		=	${SRCS:.c=.o}
 
-DEFAULT	=	\033[0m
+CC			=	clang
+
+CFLAGS		=	-Wall -Werror -Wextra -g3
+
+RM			=	rm -rf
+
+GREEN		=	\033[1;32m
+
+DEFAULT		=	\033[0m
 
 .c.o:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

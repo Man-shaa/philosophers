@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 17:44:16 by msharifi          #+#    #+#             */
-/*   Updated: 2022/12/27 18:22:49 by msharifi         ###   ########.fr       */
+/*   Created: 2022/12/27 18:32:46 by msharifi          #+#    #+#             */
+/*   Updated: 2022/12/27 18:50:19 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	ft_free(void *addr)
+int	parsing(int ac, char **av)
 {
-	free(addr);
-	addr = NULL;
-}
-
-void	free_philo(t_data data)
-{
-	if (data.philo)
-		ft_free(data.philo);
+	if (ac != 5 && ac != 6)
+		return (err_msg(TUTO, 1));
+	if (ft_atoi(av[1]) <= 0)
+		return (err_msg(N_PHILO, 2));
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:24:41 by msharifi          #+#    #+#             */
-/*   Updated: 2022/12/27 17:51:17 by msharifi         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:16:29 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac != 5 && ac != 6)
-		return (err_msg(TUTO, 1));
+	if (parsing(ac, av))
+		return (1);
 	if (create_data(&data, ac, av))
 		return (2);
+	create_threads(&data);
+	print_input(data.input);
 	print_philo(&data);
+	free_philo(data);
 	return (0);
 }

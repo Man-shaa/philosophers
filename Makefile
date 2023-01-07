@@ -6,13 +6,17 @@ ERROR_DIR	=	error/
 
 FREE_DIR	=	free/
 
+PARSING_DIR	=	parsing/
+
 UTILS_DIR	=	utils/
 
 SRCS		=	main.c \
 				test_print.c \
+				${CREATE_DIR}create_threads.c \
 				${CREATE_DIR}create.c \
 				${ERROR_DIR}error.c \
 				${FREE_DIR}free.c \
+				${PARSING_DIR}parsing.c \
 				${UTILS_DIR}utils.c
 
 OBJS		=	${SRCS:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:23:16 by msharifi          #+#    #+#             */
-/*   Updated: 2022/12/27 17:47:39 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/07 21:13:39 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define MALLOC			"Error caused by a malloc"
 # define TUTO			"./philo number_of_philosophers time_to_die \
 time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]"
+# define N_PHILO		"[number_of_philosophers] must be a positive integer"
 
 // colors
 # define DEFAULT		"\033[0m"
@@ -40,15 +41,14 @@ time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]"
 # define BLUE			"\033[0;34m"
 # define CYAN			"\033[0;36m"
 
-typedef struct s_id
+typedef struct s_philo
 {
 	int			left_fork;
 	int			right_fork;
 	int			pos;
 	int			meal_count;
-	pthread_t	id;
-	struct s_id	*next;
-}				t_id;
+	pthread_t	thread;
+}				t_philo;
 
 typedef struct s_input
 {
@@ -63,19 +63,26 @@ typedef struct s_data
 {
 	int		philo_dead;
 	int		thread_index;
-	t_id	*id;
+	pthread_mutex_t	mutex;
+	int		test;
 	t_input	input;
+	t_philo	*philo;
 }				t_data;
 
 void	print_philo(t_data *data);
+void	print_input(t_input input);
 
 // *************************** CREATE **************************
 
+// create_threads.c
+void	*routine(void *args);
+int		create_threads(t_data *data);
+
 // create.c
 int		create_data(t_data *data, int ac, char **av);
-void	init_input(t_data *data, int ac, char **av);
-void	init_id(t_data *data, int i, int j);
-int		create_id(t_data *data);
+void	init_input(t_input	*input, int ac, char **av);
+void	init_philo(t_data *data, int i, int j);
+int		create_philo(t_data *data);
 
 // *************************** ERROR ***************************
 
@@ -86,6 +93,12 @@ int		err_msg(char *s1, int ret_val);
 
 // free.c
 void	ft_free(void *addr);
+void	free_philo(t_data data);
+
+// ************************** PARSING **************************
+
+// parsing.c
+int		parsing(int ac, char **av);
 
 // *************************** UTILS ***************************
 

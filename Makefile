@@ -1,8 +1,11 @@
 NAME		=	philo
 
+CORE_DIR	=	core/
+
 CREATE_DIR	=	create/
 
-ERROR_DIR	=	error/
+
+PRINT_DIR	=	print/
 
 FREE_DIR	=	free/
 
@@ -12,9 +15,12 @@ UTILS_DIR	=	utils/
 
 SRCS		=	main.c \
 				test_print.c \
-				${CREATE_DIR}create_threads.c \
-				${CREATE_DIR}create.c \
-				${ERROR_DIR}error.c \
+				${CORE_DIR}actions.c \
+				${CORE_DIR}routine.c \
+				${CORE_DIR}time.c \
+				${CREATE_DIR}data.c \
+				${CREATE_DIR}threads.c \
+				${PRINT_DIR}print.c \
 				${FREE_DIR}free.c \
 				${PARSING_DIR}parsing.c \
 				${UTILS_DIR}utils.c

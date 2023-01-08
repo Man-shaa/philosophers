@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 17:44:16 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/08 14:33:21 by msharifi         ###   ########.fr       */
+/*   Created: 2023/01/08 13:52:01 by msharifi          #+#    #+#             */
+/*   Updated: 2023/01/08 14:27:22 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	ft_free(void *addr)
+// Routine de chaque thread philo
+void	*routine(void *args)
 {
-	free(addr);
-	addr = NULL;
+	t_data	*data;
+
+	data = (t_data *)args;
+	return (NULL);
 }

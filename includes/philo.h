@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:23:16 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/07 21:13:39 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/08 14:51:22 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@
 # define MALLOC			"Error caused by a malloc"
 # define TUTO			"./philo number_of_philosophers time_to_die \
 time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]"
-# define N_PHILO		"[number_of_philosophers] must be a positive integer"
+# define N_PHILO		"[number_of_philosophers] must be a non null \
+positive integer"
+# define INT			"All parameters must be a positive integer"
+# define THREADS		"Error while creating/joining threads"
+# define DATA			"Error while creating t_data structure (malloc problem)"
 
 // colors
 # define DEFAULT		"\033[0m"
@@ -61,46 +65,51 @@ typedef struct s_input
 
 typedef struct s_data
 {
-	int		philo_dead;
-	int		thread_index;
-	pthread_mutex_t	mutex;
-	int		test;
-	t_input	input;
-	t_philo	*philo;
+	int				philo_dead;
+	int				thread_index;
+	pthread_mutex_t	writing;
+	t_input			input;
+	t_philo			*philo;
 }				t_data;
 
-void	print_philo(t_data *data);
-void	print_input(t_input input);
+// *********************************** CORE ***********************************
 
-// *************************** CREATE **************************
+// actions.c
 
-// create_threads.c
+// routine.c
 void	*routine(void *args);
-int		create_threads(t_data *data);
 
-// create.c
+// time.c
+
+// *********************************** CREATE *********************************
+
+// data.c
 int		create_data(t_data *data, int ac, char **av);
 void	init_input(t_input	*input, int ac, char **av);
 void	init_philo(t_data *data, int i, int j);
 int		create_philo(t_data *data);
 
-// *************************** ERROR ***************************
+// threads.c
+int		create_threads(t_data *data);
 
-// error.c
-int		err_msg(char *s1, int ret_val);
-
-// *************************** FREE ****************************
+// *********************************** FREE ***********************************
 
 // free.c
 void	ft_free(void *addr);
-void	free_philo(t_data data);
 
-// ************************** PARSING **************************
+// ********************************** PARSING *********************************
 
 // parsing.c
+int		is_positive_int(int ac, char **av);
 int		parsing(int ac, char **av);
 
-// *************************** UTILS ***************************
+// *********************************** PRINT **********************************
+
+// print.c
+int		err_msg(char *s1, int ret_val);
+int		print_action(t_data *data, int id, char *action, char *color);
+
+// *********************************** UTILS **********************************
 
 // utils.c
 int		ft_strlen(char *str);

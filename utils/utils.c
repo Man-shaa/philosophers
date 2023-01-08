@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:28:17 by msharifi          #+#    #+#             */
-/*   Updated: 2022/12/27 18:22:01 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/08 14:05:22 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	*ft_calloc(size_t n, size_t size)
 	void	*tab;
 	char	*str;
 
+	if (n < 0 || size < 0)
+		return (NULL);
 	tab = malloc(n * size);
 	if (!tab)
 		return (NULL);

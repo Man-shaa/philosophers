@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:24:17 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/08 14:52:06 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/08 18:59:03 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 // Return 0 si la creation a fonctionnee, sinon 1 (probleme malloc)
 int	create_data(t_data *data, int ac, char **av)
 {
+	data->fork = NULL;
+	data->philo = NULL;
 	data->philo_dead = 0;
 	init_input(&data->input, ac, av);
 	if (create_philo(data))
-		return (1);
+		return (err_msg(PHILO, 1));
+	if (create_fork(data))
+		return (ft_free(data->philo), 2);
 	return (0);
 }
 
@@ -34,7 +38,7 @@ int	create_philo(t_data *data)
 	j = 1;
 	data->philo = ft_calloc(data->input.n_philo, sizeof(t_philo));
 	if (!data->philo)
-		return (err_msg(MALLOC, 1));
+		return (1);
 	while (j < data->input.n_philo)
 	{
 		init_philo(data, i, j);
@@ -61,6 +65,7 @@ void	init_input(t_input *input, int ac, char **av)
 // Initialise chaque philo de la structure t_philo
 void	init_philo(t_data *data, int i, int j)
 {
+	data->philo[i].t_until_die = 0;
 	data->philo[i].pos = i + 1;
 	data->philo[i].meal_count = 0;
 	data->philo[i].left_fork = i;

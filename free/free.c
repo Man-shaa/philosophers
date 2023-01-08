@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 17:44:16 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/08 14:33:21 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/08 18:15:44 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,12 @@ void	ft_free(void *addr)
 {
 	free(addr);
 	addr = NULL;
+}
+
+void	free_data(t_data data)
+{
+	if (data.fork)
+		ft_free(data.fork);
+	if (data.philo)
+		ft_free(data.philo);
 }

@@ -19,6 +19,7 @@ SRCS		=	main.c \
 				${CORE_DIR}routine.c \
 				${CORE_DIR}time.c \
 				${CREATE_DIR}data.c \
+				${CREATE_DIR}fork.c \
 				${CREATE_DIR}threads.c \
 				${PRINT_DIR}print.c \
 				${FREE_DIR}free.c \

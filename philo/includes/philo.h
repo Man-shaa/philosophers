@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:23:16 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/10 15:48:41 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:24:54 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,15 @@ int			print_action(t_data *data, int id, char *action, char *color);
 
 // *********************************** UTILS **********************************
 
+// utils_str.c
+long	ft_atoi(const char *str);
+void	fill(char *str, long long nb, int j);
+char	*ft_strdup(char *str);
+char	*ft_itoa(long long n);
+char	*ft_strjoin(char *s1, char *s2);
+
 // utils.c
 int			ft_strlen(char *str);
 void		*ft_calloc(size_t n, size_t size);
-long		ft_atoi(const char *str);
 
 #endif

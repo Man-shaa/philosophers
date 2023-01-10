@@ -24,6 +24,7 @@ SRCS		=	main.c \
 				${PRINT_DIR}print.c \
 				${FREE_DIR}free.c \
 				${PARSING_DIR}parsing.c \
+				${UTILS_DIR}utils_str.c \
 				${UTILS_DIR}utils.c
 
 OBJS		=	${SRCS:.c=.o}

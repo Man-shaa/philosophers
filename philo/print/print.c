@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 16:06:59 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/08 18:43:41 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:25:29 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,27 @@ int	err_msg(char *s1, int ret_val)
 int	print_action(t_data *data, int id, char *action, char *color)
 {
 	long long	time;
+	char		*str;
 
 	if (data->philo_dead)
 		return (1);
 	time = get_time_from_start(data->t_start);
 	if (pthread_mutex_lock(&data->writing))
 		return (2);
-	printf ("%lld	Philo %d %s%s%s\n", time, id, color, action, DEFAULT);
+	if (data->philo_dead)
+	{
+		if (pthread_mutex_unlock(&data->writing))
+			return (3);
+		return (1);
+	}
+	(void)color;
+	str = ft_itoa(time);
+	str = ft_strjoin(str, "Philo ");
+	str = ft_strjoin(str, ft_itoa(id));
+	str = ft_strjoin(str, action);
+	str = ft_strjoin(str, "\n");
+	write(1, str, ft_strlen(str));
+	// printf ("%lld	Philo %d %s%s%s\n", time, id, color, action, DEFAULT);
 	if (pthread_mutex_unlock(&data->writing))
 		return (3);
 	return (0);

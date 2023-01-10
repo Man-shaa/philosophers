@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 13:52:01 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/10 17:18:08 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:47:26 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,35 @@ int	is_dead(t_data *data, int *i)
 {
 	long long	time;
 
-	(*i)++;
 	if ((*i) == data->input.n_philo)
 		(*i) = 0;
 	time = get_time_from_start(data->philo[(*i)].t_until_die);
 	if (time > data->input.to_die)
 	{
-		print_action(data, data->philo[(*i)].pos, PHILO_DIED, DEAD);
+		print_action(data, *i + 1, PHILO_DIED, DEAD);
 		data->philo_dead = 1;
 		return (1);
 	}
-	ft_usleep(1000);
+	ft_usleep(1);
+	(*i)++;
 	return (0);
 }
 
 // Toutes les actions que chaque philo fait dans l'ordre
 int	life_loop(t_data *data, int i)
 {
+	if (data->philo_dead == 1)
+		return (1);
 	if (eating(data, i))
+		return (2);
+	if (data->philo_dead == 1)
 		return (1);
 	if (sleeping(data, i))
-		return (2);
-	if (thinking(data, i))
 		return (3);
+	if (data->philo_dead == 1)
+		return (1);
+	if (thinking(data, i))
+		return (4);
 	return (0);
 }
 
@@ -55,13 +61,14 @@ void	*routine(void *args)
 	{
 		while (!data->philo_dead
 			&& data->philo[i].meal_count < data->input.n_meal)
-			life_loop(data, i);
+			if (life_loop(data, i))
+				return (NULL);
 	}
 	else
 	{
 		while (!data->philo_dead)
 			if (life_loop(data, i))
-				break ;
+				return (NULL);
 	}
 	return (NULL);
 }

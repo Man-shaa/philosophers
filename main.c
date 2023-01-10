@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:24:41 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/08 17:44:39 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:48:16 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	main(int ac, char **av)
 		return (2);
 	if (create_threads(&data))
 		return (free_data(data), 3);
-	// print_input(data.input);
-	// print_philo(data);
 	free_data(data);
 	return (0);
 }

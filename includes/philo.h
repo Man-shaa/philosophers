@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:23:16 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/08 18:57:41 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:48:41 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]"
 positive integer"
 # define INT			"All parameters must be a positive integer"
 # define THREADS		"Error while creating/joining threads"
-# define PHILO			"Error while creating t_philo structure (malloc problem)"
+# define PHILO			"Error while creating t_philo structure (malloc)"
 
 // colors
 # define DEFAULT		"\033[0m"
@@ -81,57 +81,59 @@ typedef struct s_data
 // *********************************** CORE ***********************************
 
 // actions.c
-int	eating(t_data *data, int i);
-int	sleeping(t_data *data, int i);
-int	thinking(t_data *data, int i);
+int			eating(t_data *data, int i);
+int			sleeping(t_data *data, int i);
+int			thinking(t_data *data, int i);
 
 // routine.c
-int		life_loop(t_data *data, int i);
-void	*routine(void *args);
-void	*check(void *args);
+int			life_loop(t_data *data, int i);
+void		*routine(void *args);
+void		*check(void *args);
 
 // time.c
 long long	get_time(void);
 long long	get_time_from_start(long long time);
+void		ft_usleep(long int time_in_ms);
 void		action_time(size_t time);
 
 // *********************************** CREATE *********************************
 
 // data.c
-int		create_data(t_data *data, int ac, char **av);
-void	init_input(t_input	*input, int ac, char **av);
-void	init_philo(t_data *data, int i, int j);
-int		create_philo(t_data *data);
+int			create_data(t_data *data, int ac, char **av);
+void		init_input(t_input	*input, int ac, char **av);
+void		init_philo(t_data *data, int i, int j);
+int			create_philo(t_data *data);
 
 // fork.c
-int		create_fork(t_data *data);
+int			create_fork(t_data *data);
 
 // threads.c
-int		create_threads(t_data *data);
+int			create_threads(t_data *data);
+int			join_threads(t_data *data);
 
 // *********************************** FREE ***********************************
 
 // free.c
-void	ft_free(void *addr);
-void	free_data(t_data data);
+void		ft_free(void *addr);
+void		free_data(t_data data);
 
 // ********************************** PARSING *********************************
 
 // parsing.c
-int		is_positive_int(int ac, char **av);
-int		parsing(int ac, char **av);
+int			is_positive_int(int ac, char **av);
+int			parsing(int ac, char **av);
 
 // *********************************** PRINT **********************************
 
 // print.c
-int		err_msg(char *s1, int ret_val);
-int		print_action(t_data *data, int id, char *action, char *color);
+int			err_msg(char *s1, int ret_val);
+int			print_action(t_data *data, int id, char *action, char *color);
 
 // *********************************** UTILS **********************************
 
 // utils.c
-int		ft_strlen(char *str);
-void	*ft_calloc(size_t n, size_t size);
-long	ft_atoi(const char *str);
+int			ft_strlen(char *str);
+void		*ft_calloc(size_t n, size_t size);
+long		ft_atoi(const char *str);
 
 #endif

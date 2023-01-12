@@ -6,13 +6,18 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:24:41 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/10 18:11:45 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:58:29 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/philo.h"
 
-// Si 1 seul philo !
+
+// int	one_philo(t_data *data)
+// {
+	
+// 	return (0);
+// }
 
 void	print_philo(t_data data);
 void	print_input(t_input input);

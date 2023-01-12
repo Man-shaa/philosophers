@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:24:17 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/08 18:59:03 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:09:55 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	create_data(t_data *data, int ac, char **av)
 	if (create_philo(data))
 		return (err_msg(PHILO, 1));
 	if (create_fork(data))
-		return (ft_free(data->philo), 2);
+		return (err_msg(FORK, 2), ft_free(data->philo), 2);
 	return (0);
 }
 

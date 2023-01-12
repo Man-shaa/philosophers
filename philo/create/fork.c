@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 16:13:09 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/08 17:36:00 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:00:07 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,15 @@ int	create_fork(t_data *data)
 		i++;
 	}
 	return (0);
+}
+
+void	destroy_all_mutex(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->input.n_philo)
+	{
+		pthread_mutex_destroy(&data->fork[i])
+	}
 }

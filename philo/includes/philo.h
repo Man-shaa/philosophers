@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:23:16 by msharifi          #+#    #+#             */
-/*   Updated: 2023/01/10 20:24:54 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:15:35 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # include <sys/time.h>
 
 // actions
-# define EATING			"is eating"
-# define SLEEPING		"is sleeping"
-# define THINKING		"is thinking"
-# define TAKEN_FORK		"has taken a fork"
-# define PHILO_DIED		"died"
+# define EATING			" is eating"
+# define SLEEPING		" is sleeping"
+# define THINKING		" is thinking"
+# define TAKEN_FORK		" has taken a fork"
+# define PHILO_DIED		" died"
 
 // error
 # define MALLOC			"Error caused by a malloc"
@@ -37,6 +37,7 @@ positive integer"
 # define INT			"All parameters must be a positive integer"
 # define THREADS		"Error while creating/joining threads"
 # define PHILO			"Error while creating t_philo structure (malloc)"
+# define FORK			"Error while creating fork mutex"
 
 // colors
 # define DEFAULT		"\033[0m"
